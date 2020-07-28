@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.math.BigInteger;
+public class Brackets {
+    public Brackets(){}
+
+
+    //this method is for console input of N number
+    static int console(){
+
+        System.out.println("Enter a positive whole number:");
+
+        Scanner scan = new Scanner(System.in);
+
+        int number = scan.nextInt();//console typing
+
+        //checking if number entered is positive
+        if (number<0){
+            System.out.println("A positive whole number required");
+        }else {
+            return number;
+        }
+        return number;
+    }
+
+
+    //this method calculates the number of correct brackets variations
+    static BigInteger brackets (int nNumber) {
+
+            BigInteger [] C = new BigInteger[nNumber + 1];//creating a list that stores brackets variations
+
+            C[0] = BigInteger.valueOf(1);
+
+            //a loop that calculates all correct brackets variations according to Catalan numbers formula
+            for (int i = 1; i <= nNumber; i++) {
+                C[i] = BigInteger.valueOf(0);
+                for (int j = 0; j < i; j++)
+                    C[i]= C[i].add(C[j].multiply(C[i - 1 - j]));
+            }
+
+            return C[nNumber];
+        }
+
+
+
+
+    public static void main(String[] args) {
+    Brackets numbers = new Brackets();
+    System.out.println(numbers.brackets(numbers.console()));
+    }
+}
