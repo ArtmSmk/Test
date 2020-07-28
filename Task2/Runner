@@ -1,0 +1,29 @@
+public class Runner {
+    public static void main(String[] args) {
+
+        //adding nodes
+        GraphWeighted graphWeighted = new GraphWeighted(true);
+        NodeWeighted Kharkiv = new NodeWeighted(0, "Kharkiv");
+        NodeWeighted Lviv = new NodeWeighted(1, "Lviv");
+        NodeWeighted Kyiv = new NodeWeighted(2, "Kyiv");
+        NodeWeighted Odesa = new NodeWeighted(3, "Odesa");
+        NodeWeighted Ternopil = new NodeWeighted(4, "Ternopil");
+        NodeWeighted Dnipro = new NodeWeighted(5, "Dnipro");
+        NodeWeighted Uzhhorod = new NodeWeighted(6, "Uzhhorod");
+
+        //adding edges and prices
+        graphWeighted.addEdge(Kharkiv, Lviv, 8);
+        graphWeighted.addEdge(Kharkiv, Kyiv, 11);
+        graphWeighted.addEdge(Lviv, Odesa, 3);
+        graphWeighted.addEdge(Lviv, Ternopil, 8);
+        graphWeighted.addEdge(Lviv, Kyiv, 7);
+        graphWeighted.addEdge(Kyiv, Ternopil, 9);
+        graphWeighted.addEdge(Odesa, Ternopil, 5);
+        graphWeighted.addEdge(Odesa, Dnipro, 2);
+        graphWeighted.addEdge(Ternopil, Uzhhorod, 6);
+        graphWeighted.addEdge(Dnipro, Ternopil, 1);
+        graphWeighted.addEdge(Dnipro, Uzhhorod, 8);
+
+        graphWeighted.DijkstraShortestPath(Kharkiv, Dnipro);
+    }
+}
